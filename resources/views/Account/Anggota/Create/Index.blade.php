@@ -75,7 +75,7 @@
             margin-top: 2px;
             width: 100%;
             box-sizing: border-box;
-            font-family: montserrat;
+            font-family: sans-serif;
             color: #2C3E50;
             font-size: 16px;
             letter-spacing: 1px;
@@ -299,15 +299,18 @@
                                             <!-- progressbar -->
                                             <ul id="progressbar">
                                                 <li class="active" id="account">
-                                                    <strong>Account</strong>
+                                                    <strong>Data Anggota</strong>
                                                 </li>
-                                                <li id="personal"><strong>Personal</strong></li>
-                                                <li id="payment"><strong>Payment</strong></li>
+                                                <li id="personal"><strong>Sinyalemens</strong></li>
+                                                <li id="payment"><strong>Foto</strong></li>
                                                 <li id="confirm"><strong>Finish</strong></li>
                                             </ul>
                                             <!-- fieldsets -->
                                             <fieldset>
+
                                                 <div class="form-card">
+                                                    <h2 class="fs-title">Data Anggota</h2>
+                                                    <div class="dropdown-divider"></div>
 
                                                     <input class="@error('NRP') is-invalid @enderror" id="basic-form-nrp"
                                                         name="NRP" type="text" placeholder="No NRP"
@@ -600,66 +603,406 @@
                                             </fieldset>
                                             <fieldset>
                                                 <div class="form-card">
-                                                    <h2 class="fs-title">Personal Information</h2>
-                                                    <input type="text" name="fname" placeholder="First Name" />
-                                                    <input type="text" name="lname" placeholder="Last Name" />
-                                                    <input type="text" name="phno" placeholder="Contact No." />
-                                                    <input type="text" name="phno_2"
-                                                        placeholder="Alternate Contact No." />
+                                                    <h2 class="fs-title">Sinyalemens</h2>
+                                                    <div class="dropdown-divider"></div>
+
+                                                    <div style="display:none" class="form-group mb-3">
+                                                        <label for="datapegawai_id">ID Pemohon</label>
+                                                        {{-- <input type="text" class="form-control" id="datapegawai_id"
+                                                            name="datapegawai_id" value="{{ (int) $dataPegawai->id }}"
+                                                            readonly> --}}
+                                                        <input type="text" class="form-control" id="datapegawai_id"
+                                                            name="datapegawai_id" value="" readonly>
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Lembaga
+                                                            (Adegan)</label>
+                                                        <select class="form-select @error('lembaga') is-invalid @enderror"
+                                                            id="basic-form-gender" name="lembaga"
+                                                            aria-label="Default select example" required>
+                                                            <option selected disabled>Lembaga...</option>
+                                                            <option value="Kuat">Kuat</option>
+                                                            <option value="Tegak">Tegak</option>
+                                                            <option value="Lempai">Lempai</option>
+                                                            <option value="Lemah">Lemah</option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('lembaga')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Sikap</label>
+                                                        <select class="form-select @error('sikap') is-invalid @enderror"
+                                                            id="basic-form-gender" name="sikap"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Sikap...</option>
+                                                            <option value="Tegak">Tegak</option>
+                                                            <option value="Gagah">Gagah</option>
+                                                            <option value="Bungkok">Bungkok</option>
+                                                            <option value="Kepal Tunduk Kaku">Kepal Tunduk Kaku</option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('sikap')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">langkah</label>
+                                                        <select class="form-select @error('langkah') is-invalid @enderror"
+                                                            id="basic-form-gender" name="langkah"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Langkah...</option>
+                                                            <option value="Lenting">Lenting</option>
+                                                            <option value="Tenang">Tenang</option>
+                                                            <option value="Langkah Panjang">Langkah Panjang</option>
+                                                            <option value="Langkah Pendek">Langkah Pendek</option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('langkah')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Bangun
+                                                            Kepala</label>
+                                                        <select
+                                                            class="form-select @error('bangun kepala') is-invalid @enderror"
+                                                            id="basic-form-gender" name="bangun kepala"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Bangun Kepala...</option>
+                                                            <option value="Sebagai Pangkal">Sebagai Pangkal</option>
+                                                            <option value="Belah Ketupat">Belah Ketupat</option>
+                                                            <option value="Bulat">Bulat</option>
+                                                            <option value="Jorong">Jorong</option>
+                                                            <option value="Lonjong">Lonjong</option>
+                                                            <option value="Panjang">Panjang</option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('bangun kepala')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Rambut</label>
+                                                        <select class="form-select @error('rambut') is-invalid @enderror"
+                                                            id="basic-form-gender" name="rambut"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Rambut...</option>
+                                                            <option value="Lebat/Jarang">Lebat/Jarang</option>
+                                                            <option value="Berombak/Kejur">Berombak/Kejur</option>
+                                                            <option value="Kejur/Keriting">Kejur/Keriting</option>
+                                                            <option value="Tegak">Tegak</option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('rambut')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Kening</label>
+                                                        <select class="form-select @error('kening') is-invalid @enderror"
+                                                            id="basic-form-gender" name="kening"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Kening</option>
+                                                            <option value="Rata">Rata</option>
+                                                            <option value="Miring">Miring</option>
+                                                            <option value="KeAtas/KeBawah">Ke Atas/Ke Bawah</option>
+                                                            <option value="Bertemu seteu dengan yang lain">Bertemu seteu
+                                                                dengan yang lain
+                                                            </option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('kening')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Dahi</label>
+                                                        <select class="form-select @error('dahi') is-invalid @enderror"
+                                                            id="basic-form-gender" name="dahi"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Dahi...</option>
+                                                            <option value="Loncos Ke Belakang/Lurus Kebawah">Loncos Ke
+                                                                Belakang/Lurus
+                                                                Kebawah
+                                                            </option>
+                                                            <option value="Cenderung ke belakang">Cenderung ke belakang
+                                                            </option>
+                                                            <option value="Melengkung Keras">Melengkung Keras</option>
+                                                            <option value="Tinggi/Rendah lebar ciut">Tinggi/Rendah lebar
+                                                                ciut</option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('dahi')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Hidung</label>
+                                                        <select class="form-select @error('hidung') is-invalid @enderror"
+                                                            id="basic-form-gender" name="hidung"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Hidung...</option>
+                                                            <option value="Pangkalnya Rata/Masuk kedalam">Pangkalnya
+                                                                Rata/Masuk kedalam
+                                                            </option>
+                                                            <option
+                                                                value="Batangnya : Membentuk kedalam/keluar lurus, alasnya menuju ke atas">
+                                                                Batangnya : Membentuk kedalam/keluar lurus, alasnya menuju
+                                                                ke atas
+                                                            </option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('hidung')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Bibir</label>
+                                                        <select class="form-select @error('bibir') is-invalid @enderror"
+                                                            id="basic-form-gender" name="bibir"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Bibir...</option>
+                                                            <option value="Tebal">Tebal</option>
+                                                            <option value="Tipis">Tipis</option>
+                                                            <option value="Sumbing">Sumbing</option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('bibir')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Telinga</label>
+                                                        <select class="form-select @error('telinga') is-invalid @enderror"
+                                                            id="basic-form-gender" name="telinga"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Telinga...</option>
+                                                            <option value="Bulat bujur tiga penjuru dari belakang">Bulat
+                                                                bujur tiga penjuru
+                                                                dari belakang
+                                                            </option>
+                                                            <option
+                                                                value="Berlengket dengan kepala dengan kepala bagian atas mengenai kepala belakang">
+                                                                Berlengket dengan kepala dengan kepala bagian atas mengenai
+                                                                kepala belakang
+                                                            </option>
+                                                            <option
+                                                                value="Bentuk cuping berupa baja persegi/melengkukng/bergonta-ganti rata/tebal/benar">
+                                                                Bentuk cuping berupa baja persegi/melengkukng/bergonta-ganti
+                                                                rata/tebal/benar
+                                                            </option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('telinga')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-gender">Urusan Polisi
+                                                            Militer</label>
+                                                        <select
+                                                            class="form-select @error('urusan_polisi_militer') is-invalid @enderror"
+                                                            id="basic-form-gender" name="urusan_polisi_militer"
+                                                            aria-label="Default select example">
+                                                            <option selected disabled>Urusan Polisi Militer...</option>
+                                                            <option value="Pernah">Pernah</option>
+                                                            <option value="Tidak Pernah">Tidak Pernah</option>
+                                                            <option value="Lain-Lain">Lain-Lain</option>
+                                                        </select>
+                                                        @error('urusan_polisi_militer')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
                                                 </div>
                                                 <input type="button" name="previous"
                                                     class="previous action-button-previous" value="Previous" />
                                                 <input type="button" name="next" class="next action-button"
                                                     value="Next Step" />
                                             </fieldset>
+
                                             <fieldset>
                                                 <div class="form-card">
-                                                    <h2 class="fs-title">Payment Information</h2>
-                                                    <div class="radio-group">
-                                                        <div class='radio' data-value="credit"><img
-                                                                src="https://i.imgur.com/XzOzVHZ.jpg" width="200px"
-                                                                height="100px"></div>
-                                                        <div class='radio' data-value="paypal"><img
-                                                                src="https://i.imgur.com/jXjwZlj.jpg" width="200px"
-                                                                height="100px"></div>
-                                                        <br>
+                                                    <h2 class="fs-title">Upload Foto</h2>
+                                                    <div class="dropdown-divider"></div>
+
+                                                    {{-- <input style="display: none" name="siyalem_id" class="form-control"
+                                                        type="text" value="{{ (int) $siyalem->id }}" readonly> --}}
+                                                    <input style="display: none" name="siyalem_id" class="form-control"
+                                                        type="text" value="" readonly>
+
+                                                    <div class="card-header">
+                                                        <div class="row flex-between-end">
+                                                            <div class="col-auto align-self-center">
+                                                                <h5 class="mb-0">Tampak Foto Depan</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="dropdown-divider"></div>
                                                     </div>
-                                                    <label class="pay">Card Holder Name*</label>
-                                                    <input type="text" name="holdername" placeholder="" />
-                                                    <div class="row">
-                                                        <div class="col-9">
-                                                            <label class="pay">Card Number*</label>
-                                                            <input type="text" name="cardno" placeholder="" />
-                                                        </div>
-                                                        <div class="col-3">
-                                                            <label class="pay">CVC*</label>
-                                                            <input type="password" name="cvcpwd" placeholder="***" />
-                                                        </div>
+                                                    <div class="mb-3">
+                                                        <img class="col-md-6 offset-md-3 mb-3" id="uploadPreview"
+                                                            style="width: 150px; height: 180px"
+                                                            src="{{ asset('assets/img/add-user3.png') }}" /><br />
+                                                        <input
+                                                            class="form-control @error('depan_pic') is-invalid @enderror"
+                                                            id="uploadImage" type="file" name="depan_pic"
+                                                            onchange="PreviewImage();" autofocus />
+                                                        <script type="text/javascript">
+                                                            function PreviewImage() {
+                                                                var oFReader = new FileReader();
+                                                                oFReader.readAsDataURL(document.getElementById("uploadImage").files[0]);
+                                                                oFReader.onload = function(oFREvent) {
+                                                                    document.getElementById("uploadPreview").src = oFREvent.target.result;
+                                                                };
+                                                            }
+                                                        </script>
+                                                        @error('depan_pic')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-3">
-                                                            <label class="pay">Expiry Date*</label>
+
+                                                    <div class="card-header">
+                                                        <div class="row flex-between-end">
+                                                            <div class="col-auto align-self-center">
+                                                                <h5 class="mb-0">Tampak Foto Samping Kanan</h5>
+                                                            </div>
                                                         </div>
-                                                        <div class="col-9">
-                                                            <select class="list-dt" id="month" name="expmonth">
-                                                                <option selected>Month</option>
-                                                                <option>January</option>
-                                                                <option>February</option>
-                                                                <option>March</option>
-                                                                <option>April</option>
-                                                                <option>May</option>
-                                                                <option>June</option>
-                                                                <option>July</option>
-                                                                <option>August</option>
-                                                                <option>September</option>
-                                                                <option>October</option>
-                                                                <option>November</option>
-                                                                <option>December</option>
-                                                            </select>
-                                                            <select class="list-dt" id="year" name="expyear">
-                                                                <option selected>Year</option>
-                                                            </select>
+                                                        <div class="dropdown-divider"></div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <img class="col-md-6 offset-md-3 mb-3" id="uploadPreview2"
+                                                            style="width: 150px; height: 180px"
+                                                            src="{{ asset('assets/img/add-user3.png') }}" /><br />
+                                                        <input
+                                                            class="form-control @error('kanan_pic') is-invalid @enderror"
+                                                            id="uploadImage2" type="file" name="kanan_pic"
+                                                            onchange="Preview2Image();" />
+                                                        <script type="text/javascript">
+                                                            function Preview2Image() {
+                                                                var oFReader = new FileReader();
+                                                                oFReader.readAsDataURL(document.getElementById("uploadImage2").files[0]);
+                                                                oFReader.onload = function(oFREvent) {
+                                                                    document.getElementById("uploadPreview2").src = oFREvent.target.result;
+                                                                };
+                                                            }
+                                                        </script>
+                                                        @error('kanan_pic')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <div class="row flex-between-end">
+                                                            <div class="col-auto align-self-center">
+                                                                <h5 class="mb-0">Tampak Foto Samping Kiri</h5>
+                                                            </div>
                                                         </div>
+                                                        <div class="dropdown-divider"></div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <img class="col-md-6 offset-md-3 mb-3" id="uploadPreview3"
+                                                            style="width: 150px; height: 180px"
+                                                            src="{{ asset('assets/img/add-user3.png') }}" /><br />
+                                                        <input
+                                                            class="form-control @error('kiri_pic') is-invalid @enderror"
+                                                            id="uploadImage3" type="file" name="kiri_pic"
+                                                            onchange="Preview3Image();" />
+                                                        <script type="text/javascript">
+                                                            function Preview3Image() {
+                                                                var oFReader = new FileReader();
+                                                                oFReader.readAsDataURL(document.getElementById("uploadImage3").files[0]);
+                                                                oFReader.onload = function(oFREvent) {
+                                                                    document.getElementById("uploadPreview3").src = oFREvent.target.result;
+                                                                };
+                                                            }
+                                                        </script>
+                                                        @error('kiri_pic')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="card-header">
+                                                        <div class="row flex-between-end">
+                                                            <div class="col-auto align-self-center">
+                                                                <h5 class="mb-0">Upload Sidik Jari</h5>
+                                                            </div>
+                                                        </div>
+                                                        <div class="dropdown-divider"></div>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <img class="col-md-6 offset-md-3 mb-3" id="uploadPreview4"
+                                                            style="width: 150px; height: 180px"
+                                                            src="{{ asset('assets/img/addfinger.png') }}" /><br />
+                                                        <input
+                                                            class="form-control @error('sidik_pic') is-invalid @enderror"
+                                                            id="uploadImage4" type="file" name="sidik_pic"
+                                                            onchange="Preview4Image();" />
+                                                        <script type="text/javascript">
+                                                            function Preview4Image() {
+                                                                var oFReader = new FileReader();
+                                                                oFReader.readAsDataURL(document.getElementById("uploadImage4").files[0]);
+                                                                oFReader.onload = function(oFREvent) {
+                                                                    document.getElementById("uploadPreview4").src = oFREvent.target.result;
+                                                                };
+                                                            }
+                                                        </script>
+                                                        @error('sidik_pic')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    </div>
+
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="basic-form-namaayah">Keterangan
+                                                            Anggota</label>
+                                                        <textarea class="form-control @error('ket_pic') is-invalid @enderror" id="basic-form-namaayah" name="ket_pic"
+                                                            rows="3" type="text" placeholder="Masukan Keterangan"></textarea>
+                                                        @error('ket_pic')
+                                                            <div class="invalid-feedback">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <input type="button" name="previous"
