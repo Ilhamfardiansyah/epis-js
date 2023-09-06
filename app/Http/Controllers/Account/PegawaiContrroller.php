@@ -22,9 +22,9 @@ class PegawaiContrroller extends Controller
 
 
     // Input Anggota
-    public function create()
+    public function create(DataPegawai $dataPegawai)
     {
-        return view('Account.Anggota.Create.Index');
+        return view('Account.Anggota.Create.Index', compact('dataPegawai'));
     }
 
     public function store(Request $request): RedirectResponse

@@ -608,11 +608,10 @@
 
                                                     <div style="display:none" class="form-group mb-3">
                                                         <label for="datapegawai_id">ID Pemohon</label>
-                                                        {{-- <input type="text" class="form-control" id="datapegawai_id"
-                                                            name="datapegawai_id" value="{{ (int) $dataPegawai->id }}"
-                                                            readonly> --}}
                                                         <input type="text" class="form-control" id="datapegawai_id"
-                                                            name="datapegawai_id" value="" readonly>
+                                                            name="datapegawai_id" value="{{ (int) $dataPegawai->id }}">
+                                                        {{-- <input type="text" class="form-control" id="datapegawai_id"
+                                                            name="datapegawai_id" value="" readonly> --}}
                                                     </div>
 
                                                     <div class="mb-3">
@@ -1007,7 +1006,7 @@
                                                 </div>
                                                 <input type="button" name="previous"
                                                     class="previous action-button-previous" value="Previous" />
-                                                <input type="button" name="make_payment" class="next action-button"
+                                                <input type="button" name="nextFinish" class="next action-button"
                                                     value="Confirm" />
                                             </fieldset>
                                             <fieldset>
@@ -1138,10 +1137,10 @@
             localStorage.setItem('formData', formDataJSON);
         }
 
-        // Add an event listener to the "Next" button to call the saveFormDataToLocalStorage function
-        const nextButton = document.querySelector('.next button');
-        if (nextButton) {
-            nextButton.addEventListener('click', saveFormDataToLocalStorage);
+        // Add an event listener to the "Confirm" button to call the saveFormDataToLocalStorage function
+        const confirmButton = document.querySelector('input[name="nextFinish"]');
+        if (confirmButton) {
+            confirmButton.addEventListener('click', saveFormDataToLocalStorage);
         }
     </script>
 @endsection
