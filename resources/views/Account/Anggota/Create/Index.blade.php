@@ -859,10 +859,9 @@
                                                     <h2 class="fs-title">Upload Foto</h2>
                                                     <div class="dropdown-divider"></div>
 
-                                                    {{-- <input style="display: none" name="siyalem_id" class="form-control"
-                                                        type="text" value="{{ (int) $siyalem->id }}" readonly> --}}
                                                     <input style="display: none" name="siyalem_id" class="form-control"
-                                                        type="text" value="" readonly>
+                                                        type="text" value="{{ (int) $dataPegawai->siyalem }}"
+                                                        readonly>
 
                                                     <div class="card-header">
                                                         <div class="row flex-between-end">
@@ -1135,6 +1134,32 @@
 
             // Save the JSON string to local storage
             localStorage.setItem('formData', formDataJSON);
+        }
+
+        function saveImageToLocalStorage(inputId, key) {
+            var fileInput = document.getElementById(inputId);
+            var file = fileInput.files[0];
+
+            if (file) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    var imageData = e.target.result;
+                    localStorage.setItem(key, imageData);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Function to load an image from local storage and display it
+        function loadImageFromLocalStorage(imageId, key) {
+            var imageData = localStorage.getItem(key);
+
+            if (imageData) {
+                var imgElement = document.getElementById(imageId);
+                imgElement.src = imageData;
+            }
         }
 
         // Add an event listener to the "Confirm" button to call the saveFormDataToLocalStorage function
